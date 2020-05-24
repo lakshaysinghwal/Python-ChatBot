@@ -10,14 +10,14 @@ m = open('modules pythons.txt', 'r', errors='ignore')
 checkpoint = "./chatbot_weights.ckpt"
 raw = f.read()
 rawone = m.read()
-raw = raw.lower()  # converts to lowercase
-rawone = rawone.lower()  # converts to lowercase
-#nltk.download('punkt')  # first-time use only
-#nltk.download('wordnet')  # first-time use only
-sent_tokens = nltk.sent_tokenize(raw)  # converts to list of sentences
-word_tokens = nltk.word_tokenize(raw)  # converts to list of words
-sent_tokensone = nltk.sent_tokenize(rawone)  # converts to list of sentences
-word_tokensone = nltk.word_tokenize(rawone)  # converts to list of words
+raw = raw.lower()  
+rawone = rawone.lower() 
+#nltk.download('punkt')  
+#nltk.download('wordnet')  
+sent_tokens = nltk.sent_tokenize(raw)  
+word_tokens = nltk.word_tokenize(raw)
+sent_tokensone = nltk.sent_tokenize(rawone)
+word_tokensone = nltk.word_tokenize(rawone)
 
 sent_tokens[:2]
 sent_tokensone[:2]
@@ -52,40 +52,26 @@ Basic_AnsM = ["Consider a module to be the same as a code library.",
               "A file containing a set of functions you want to include in your application.",
               "A module can define functions, classes and variables. A module can also include runnable code. Grouping related code into a module makes the code easier to understand and use."]
 
-
-# Checking for greetings
 def greeting(sentence):
     """If user's input is a greeting, return a greeting response"""
     for word in sentence.split():
         if word.lower() in GREETING_INPUTS:
             return random.choice(GREETING_RESPONSES)
-
-
-# Checking for Basic_Q
 def basic(sentence):
     for word in Basic_Q:
         if sentence.lower() == word:
             return Basic_Ans
-
-
-# Checking for Basic_QM
 def basicM(sentence):
     """If user's input is a greeting, return a greeting response"""
     for word in Basic_Om:
         if sentence.lower() == word:
             return random.choice(Basic_AnsM)
-
-
-# Checking for Introduce
 def IntroduceMe(sentence):
     return random.choice(Introduce_Ans)
 
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-
-
-# Generating response
 def response(user_response):
     robo_response = ''
     sent_tokens.append(user_response)
@@ -102,9 +88,6 @@ def response(user_response):
     else:
         robo_response = robo_response + sent_tokens[idx]
         return robo_response
-
-
-# Generating response
 def responseone(user_response):
     robo_response = ''
     sent_tokensone.append(user_response)
@@ -164,13 +147,8 @@ def chat(user_response):
             elif (basic(user_response) != None):
                 return basic(user_response)
             else:
-                # print("ROBO: ",end="")
-                # print(response(user_response))
                 return response(user_response)
                 sent_tokens.remove(user_response)
-
     else:
         flag = False
         return "Bye! take care.."
-
-
