@@ -1,5 +1,5 @@
 # Python-ChatBot
-Retrieval Based Chat Bot using NLTK , NUMPHY, CORPUS etc.
+Retrieval Based Chat Bot using NLTK , NUMPY, CORPUS etc.
 How to setup this project
 Step 1 : Install all prerequisite libraries like NLTK, corpus, sklearn.
 To install these libraries use pip command.
